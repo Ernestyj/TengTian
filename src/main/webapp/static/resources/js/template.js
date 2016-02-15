@@ -8,11 +8,11 @@ angular.module('myApp', []).controller('myCtrl', ['$scope','$templateCache', fun
                 "<span class='icon-bar'></span>\n"+
                 "<span class='icon-bar'></span>\n"+
             "</button>\n"+
-            "<a class='navbar-brand' href='./home.html'>智慧社区应用服务门户</a>\n"+
+            "<a class='navbar-brand' href='./test_home.html'>智慧社区应用服务门户</a>\n"+
         "</div>\n"+
         "<div id='navbar' class='collapse navbar-collapse navbar-right'>\n"+
             "<ul class='nav navbar-nav'>\n"+
-                "<li><a href='./home.html' >首页</a></li>\n"+
+                "<li><a href='./test_home.html' >首页</a></li>\n"+
                 "<li><a href='#'>设置</a></li>\n"+
                 "<li><a href='#'>信息</a></li>\n"+
                 "<li><a href='#'>帮助</a></li>\n"+

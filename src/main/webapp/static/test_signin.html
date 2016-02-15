@@ -50,7 +50,7 @@
         	<!--a class="btn btn-lg btn-primary btn-block" href="/signup" th:href="@{/signup}">注册</a-->
 			<a class="btn btn-lg btn-primary btn-block" href="./signup.html">注册</a>
         	<!--a class="btn btn-lg btn-primary btn-block" href="/home" th:href="@{/home}">主页</a-->
-			<a class="btn btn-lg btn-primary btn-block" href="./home.html">主页</a>
+			<a class="btn btn-lg btn-primary btn-block" href="./test_home.html">主页</a>
         </div>
     </div>
     <div class="col-md-3"></div>
@@ -102,7 +102,7 @@
 //                alert('success');
                 if(data.code == 0){
                     console.log('Redirect to homepage')
-                    window.location.href="home.html";
+                    window.location.href="test_home.html";
                 }else{
                     alert(data.msg);
                     //if(data.code == 5003){
@@ -131,7 +131,7 @@
 					alert(data.code);
 					if(data.code == 0){
 						console.log('Redirect to homepage')
-						window.location.href="./home.html";
+						window.location.href="./test_home.html";
 					}else{
 						alert(data.msg);
 						//if(data.code == 5003){
