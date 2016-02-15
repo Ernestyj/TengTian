@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+       <context:component-scan base-package="com.eugene" />
+       <context:annotation-config />
+       <mvc:annotation-driven/>
+
+       <!-- 系统基础配置  将占位符替换到指定的配置文件中 -->
+       <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+              <!--指定jdbc相关信息位置-->
+              <property name="locations" value="classpath:jdbc.properties" />
+       </bean>
+
+       <!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+              <property name="driverClassName" value="${driverClassName}"></property>
+              <property name="url" value="${url}"></property>
+              <property name="username" value="${username}"></property>
+              <property name="password" value="${password}"></property>
+              <property name="defaultAutoCommit" value="false" />
+       </bean>
+
+       <!-- 配置事务管理器 -->
+       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+              <property name="dataSource" ref="dataSource" />
+       </bean>
+
+       <!-- MyBatis配置 -->
+       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSource" />
+              <!--在一些特殊环境下，比如dataSource和MyBatis transaction managers被忽略时，需要这个配置-->
+              <property name="configLocation" value="classpath:mybatis-config.xml" />
+              <!-- 该属性指定mybatis xml映射文件的位置 -->
+              <property name="mapperLocations" value="classpath:com/eugene/mapper/*.xml" />
+       </bean>
+       <!-- mapper接口自动扫描注入 -->
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+              <property name="basePackage" value="com.eugene.mapper" />
+              <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+       </bean>
+
+</beans>

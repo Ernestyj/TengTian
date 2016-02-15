@@ -1,0 +1,16 @@
+# 数据库连接参数
+db.driver.class=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://202.120.40.111:3306/MetaManager?useUnicode=true&characterEncoding=UTF-8
+db.url.short=jdbc:mysql://202.120.40.111:3306/MetaManager
+db.username=root
+db.password=XXX
+
+# 数据库驱动jar路径
+db.driver.classpath=libs/mysql-connector-java-5.1.27.jar
+
+# Mybatis generator configuration 包路径配置
+javamodel.target.package=com.eugene.model
+sqlmapperxml.target.package=com.eugene.mapper
+sqlmapper.target.package=com.eugene.mapper
+
+log.level=DEBUG
